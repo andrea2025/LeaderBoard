@@ -21,8 +21,8 @@ public class SkillLeaderFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
-    public static SkillLeaderFragment newInstance(String param1, String param2) {
+
+    public static SkillLeaderFragment newInstance() {
         return new SkillLeaderFragment();
     }
 
@@ -41,7 +41,6 @@ public class SkillLeaderFragment extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }
