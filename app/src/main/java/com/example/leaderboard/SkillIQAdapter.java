@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,7 +36,9 @@ public class SkillIQAdapter extends RecyclerView.Adapter<SkillIQAdapter.SkillVie
     public void onBindViewHolder(@NonNull SkillViewHolder holder, int position) {
         BoardList board = mBoardList.get(position);
         holder.mName.setText(board.getUserName());
-        holder.mInfo.setText(board.getUserInfo());
+        holder.mScore.setText(board.getUserHours() + " skill IQ Score,");
+        holder.mCountry.setText(board.getUserCountry());
+        Picasso.get().load(board.getBadgeUrl()).into(holder.mBadge);
 
     }
 
@@ -43,12 +48,15 @@ public class SkillIQAdapter extends RecyclerView.Adapter<SkillIQAdapter.SkillVie
     }
 
     public class SkillViewHolder extends RecyclerView.ViewHolder {
-        TextView mName, mInfo;
+        TextView mName, mScore,mCountry;
+        ImageView mBadge;
         public SkillViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mName = itemView.findViewById(R.id.iqName);
-            mInfo = itemView.findViewById(R.id.iqInfo);
+            mScore = itemView.findViewById(R.id.score);
+            mCountry = itemView.findViewById(R.id.iqCountry);
+            mBadge = itemView.findViewById(R.id.learnerBadge);
         }
     }
 }

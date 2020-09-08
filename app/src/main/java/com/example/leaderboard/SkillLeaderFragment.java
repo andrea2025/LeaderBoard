@@ -5,15 +5,29 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.leaderboard.data.Api.LearnerResponse;
+import com.example.leaderboard.data.Api.Skills;
+import com.example.leaderboard.data.AppUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class SkillLeaderFragment extends Fragment {
-
+ArrayList<BoardList> mBoardList = new ArrayList<>();
+RecyclerView mRecyclerView;
     private OnFragmentInteractionListener mListener;
 
     public SkillLeaderFragment() {
@@ -35,8 +49,48 @@ public class SkillLeaderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_skill_leader_g, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_skill_leader_g, container, false);
+        mRecyclerView = rootView.findViewById(R.id.skillRecycler);
+        Call<List<Skills>> call = AppUtils.mService().skill();
+        call.enqueue(new Callback<List<Skills>>() {
+
+
+            @Override
+            public void onResponse(Call<List<Skills>> call, Response<List<Skills>> response) {
+                if (response.isSuccessful()){
+                    skillIQ(response);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Skills>> call, Throwable t) {
+
+            }
+        });
+
+        return rootView;
+    }
+
+
+    public void skillIQ(Response<List<Skills>> response) {
+        List<Skills> list = response.body();
+        Log.i("response", "learner: " + response.body());
+        for (int i = 0; i < list.size(); i++) {
+            Skills dataList = list.get(i);
+            String name = dataList.getUsername();
+            String hours = dataList.getScore();
+            String country = dataList.getCountry();
+            String url = dataList.getBadge();
+            mBoardList.add(new BoardList(name,hours,country,url));
+            LearningLeaderAdapter adapter = new LearningLeaderAdapter(getActivity(),mBoardList);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            mRecyclerView.setLayoutManager(layoutManager);
+            mRecyclerView.setAdapter(adapter);
+
+        }
+
     }
 
 

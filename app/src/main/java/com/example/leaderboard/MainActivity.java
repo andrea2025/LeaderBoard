@@ -33,23 +33,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-//
-//        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-//
-//            TabLayout.Tab tab = tabLayout.getTabAt(i);
-//            if (tab != null) {
-//
-//                TextView tabTextView = new TextView(this);
-//                tab.setCustomView(tabTextView);
-//
-//                tabTextView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                tabTextView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-//
-//
-//            }
-//
-//        }
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -74,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < tabChildsCount; i++) {
                     View tabViewChild = vgTab.getChildAt(i);
                     if (tabViewChild instanceof TextView) {
-                        ((TextView) tabViewChild).setTextColor(Color.BLUE);
+                        ((TextView) tabViewChild).setTextColor(Color.GRAY);
 
                     }
                 }

@@ -1,27 +1,48 @@
 package com.example.leaderboard;
 
 public class BoardList {
-    private String UserName;
-    private String UserInfo;
 
-    public BoardList(String userName, String userInfo) {
-        UserName = userName;
-        UserInfo = userInfo;
+    private String userName;
+    private String userHours;
+    private String userCountry;
+    private String badgeUrl;
+
+    public BoardList(String userName, String userHours, String userCountry, String badgeUrl) {
+        this.userName = userName;
+        this.userHours = userHours;
+        this.userCountry = userCountry;
+        this.badgeUrl = badgeUrl;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
-    public String getUserInfo() {
-        return UserInfo;
+    public String getUserHours() {
+        return userHours;
     }
 
-    public void setUserInfo(String userInfo) {
-        UserInfo = userInfo;
+    public void setUserHours(String userHours) {
+        this.userHours = userHours;
+    }
+
+    public String getUserCountry() {
+        return userCountry;
+    }
+
+    public void setUserCountry(String userCountry) {
+        this.userCountry = userCountry;
+    }
+
+    public String getBadgeUrl() {
+        return badgeUrl;
+    }
+
+    public void setBadgeUrl(String badgeUrl) {
+        this.badgeUrl = badgeUrl;
     }
 }

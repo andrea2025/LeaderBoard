@@ -1,16 +1,31 @@
 package com.example.leaderboard;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.leaderboard.data.Api.LearnerResponse;
+import com.example.leaderboard.data.AppUtils;
+import com.example.leaderboard.data.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LearningLeaderFragment extends Fragment {
+    ArrayList<BoardList> mBoardLists = new ArrayList<>();
+    RecyclerView mRecyclerView;
     private OnFragmentInteractionListener mListener;
 
     public LearningLeaderFragment() {
@@ -24,7 +39,8 @@ public class LearningLeaderFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
     }
 
@@ -32,9 +48,49 @@ public class LearningLeaderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_learning_leader, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_learning_leader, container, false);
+        mRecyclerView = rootView.findViewById(R.id.learnerRecyclerView);
+
+        Call<List<LearnerResponse>> call = AppUtils.mService().learner();
+        call.enqueue(new Callback<List<LearnerResponse>>() {
+
+            @Override
+            public void onResponse(Call<List<LearnerResponse>> call, Response<List<LearnerResponse>> response) {
+               if (response.isSuccessful()){
+                   allLearner(response);
+               }
+                Log.i("RESPONSE ", String.valueOf(response.body()));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<LearnerResponse>> call, Throwable t) {
+                System.out.println("ERROR here");
+                Log.i("ERROR ", String.valueOf(t.getMessage()));
+            }
+        });
+
+        return  rootView;
     }
 
+    public void allLearner(Response<List<LearnerResponse>> response) {
+        List<LearnerResponse> list = response.body();
+        Log.i("response", "learner: " + response.body());
+        for (int i = 0; i < list.size(); i++) {
+            LearnerResponse dataList = list.get(i);
+            String name = dataList.getUsername();
+            String hours = dataList.getHours();
+            String country = dataList.getCountry();
+            String url = dataList.getBadge();
+          mBoardLists.add(new BoardList(name,hours,country,url));
+           LearningLeaderAdapter adapter = new LearningLeaderAdapter(getActivity(),mBoardLists);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            mRecyclerView.setLayoutManager(layoutManager);
+           mRecyclerView.setAdapter(adapter);
+
+        }
+
+    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

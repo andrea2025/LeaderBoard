@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,8 +34,15 @@ public class LearningLeaderAdapter extends RecyclerView.Adapter<LearningLeaderAd
     @Override
     public void onBindViewHolder(@NonNull LearningViewHolder holder, int position) {
         BoardList boardList = mBoardLists.get(position);
-  holder.description.setText(boardList.getUserInfo());
+
   holder.name.setText(boardList.getUserName());
+        holder.hours.setText(boardList.getUserHours()  + " Learning Hours,");
+        holder.country.setText(boardList.getUserCountry());
+        Picasso.get().load(boardList.getBadgeUrl()).into(holder.badge);
+
+
+
+
 
     }
 
@@ -42,12 +52,15 @@ public class LearningLeaderAdapter extends RecyclerView.Adapter<LearningLeaderAd
     }
 
     public class LearningViewHolder extends RecyclerView.ViewHolder {
-        TextView name,description;
+        TextView name,hours,country;
+        ImageView badge;
         public LearningViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-            description = itemView.findViewById(R.id.info);
+            hours = itemView.findViewById(R.id.info);
+            country = itemView.findViewById(R.id.country);
+            badge = itemView.findViewById(R.id.learnerIcon);
         }
     }
 }
