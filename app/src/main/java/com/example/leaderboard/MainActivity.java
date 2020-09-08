@@ -3,6 +3,7 @@ package com.example.leaderboard;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +11,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     public static ViewPager viewPager;
     private ViewPagerAdapter mViewPagerAdapter;
+
 
 
     @Override
@@ -70,5 +73,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void submit(View view) {
+        Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
+        startActivity(intent);
     }
 }

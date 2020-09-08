@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_margin="30dp"
+    android:layout_margin="10dp"
     android:layout_height="match_parent">
 
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_cancel"
-    android:layout_gravity="end"/>
-
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/confirmPage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center">
-        <TextView
-            android:id="@+id/dialogText"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Are you sure"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:textColor="@color/gray"/>
+        android:layout_height="300dp"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_toRightOf="@id/dialogText"
+            android:id="@+id/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/ic_question_mark"/>
-    </RelativeLayout>
+            android:src="@drawable/ic_cancel"
+            android:layout_gravity="end"/>
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:text="Yes"
-        android:textSize="20sp"
-        android:textAllCaps="false"
-        android:paddingRight="50dp"
-        android:paddingLeft="50dp"
-android:background="@drawable/yellow_light_bg"
-        android:textColor="@color/yellow"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/dialogText"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Are you sure"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/gray"/>
 
-        />
+            <ImageView
+                android:layout_toRightOf="@id/dialogText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_question_mark"/>
+        </RelativeLayout>
 
+
+        <Button
+            android:id="@+id/yesBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:text="Yes"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:paddingRight="50dp"
+            android:paddingLeft="50dp"
+            android:background="@drawable/yellow_light_bg"
+            android:textColor="@color/yellow"
+
+            />
+
+
+    </LinearLayout>
 
 
 
 
 </LinearLayout>
+
+
