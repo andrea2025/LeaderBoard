@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.leaderboard.learning.LearningLeaderFragment;
+import com.example.leaderboard.skill.SkillLeaderFragment;
 import com.google.android.material.tabs.TabLayout;
-import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     View tabViewChild = vgTab.getChildAt(i);
                     if (tabViewChild instanceof TextView) {
                         ((TextView) tabViewChild).setTextColor(Color.WHITE);
+                        ((TextView) tabViewChild).setTextSize(40);
 
                     }
                 }
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                     View tabViewChild = vgTab.getChildAt(i);
                     if (tabViewChild instanceof TextView) {
                         ((TextView) tabViewChild).setTextColor(Color.GRAY);
+                        ((TextView) tabViewChild).setTextSize(40);
+
 
                     }
                 }

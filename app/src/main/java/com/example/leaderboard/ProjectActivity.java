@@ -3,8 +3,9 @@ package com.example.leaderboard;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
-import android.content.IntentFilter;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
     Button mButton;
     UserService mUserService;
     AlertDialog alertOne, alertTwo, alertThree;
+    ImageView backArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,14 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         mLastname = findViewById(R.id.lastName);
         mEmail = findViewById(R.id.emailAddress);
         mLink = findViewById(R.id.link);
-
+        backArrow = findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mButton.setOnClickListener(this);
 
@@ -64,7 +73,10 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         ImageView cancel = view.findViewById(R.id.cancel);
         alertOne = builder.create();
         alertOne.show();
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.55);
 
+        alertOne.getWindow().setLayout(width, height);
 
         yes.setOnClickListener(new View.OnClickListener() {
             @Override

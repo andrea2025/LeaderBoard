@@ -1,4 +1,4 @@
-package com.example.leaderboard;
+package com.example.leaderboard.learning;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,9 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.leaderboard.BoardList;
+import com.example.leaderboard.R;
 import com.example.leaderboard.data.Api.LearnerResponse;
 import com.example.leaderboard.data.AppUtils;
-import com.example.leaderboard.data.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

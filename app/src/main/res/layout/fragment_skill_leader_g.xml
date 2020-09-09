@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SkillLeaderFragment">
+    tools:context=".skill.SkillLeaderFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/skillRecycler"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

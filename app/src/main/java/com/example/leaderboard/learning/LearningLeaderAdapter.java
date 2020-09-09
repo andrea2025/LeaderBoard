@@ -1,4 +1,4 @@
-package com.example.leaderboard;
+package com.example.leaderboard.learning;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.leaderboard.BoardList;
+import com.example.leaderboard.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,20 +30,17 @@ public class LearningLeaderAdapter extends RecyclerView.Adapter<LearningLeaderAd
     public LearningViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.learning_user, parent, false);
-       return new LearningViewHolder(view);
+        return new LearningViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull LearningViewHolder holder, int position) {
         BoardList boardList = mBoardLists.get(position);
 
-  holder.name.setText(boardList.getUserName());
-        holder.hours.setText(boardList.getUserHours()  + " Learning Hours,");
+        holder.name.setText(boardList.getUserName());
+        holder.hours.setText(boardList.getUserHours() + " Learning Hours,");
         holder.country.setText(boardList.getUserCountry());
         Picasso.get().load(boardList.getBadgeUrl()).into(holder.badge);
-
-
-
 
 
     }
@@ -52,8 +51,9 @@ public class LearningLeaderAdapter extends RecyclerView.Adapter<LearningLeaderAd
     }
 
     public class LearningViewHolder extends RecyclerView.ViewHolder {
-        TextView name,hours,country;
+        TextView name, hours, country;
         ImageView badge;
+
         public LearningViewHolder(@NonNull View itemView) {
             super(itemView);
 

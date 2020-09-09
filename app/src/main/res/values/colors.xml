@@ -9,4 +9,7 @@
     <color name="light_yellow">#fcb961</color>
     <color name="yellow">#fb9a21</color>
     <color name="dark_yellow">#e98404</color>
+    <color name="whitish">#fafafa</color>
+    <color name="grayish">#d7d7d7</color>
+    <color name="silver">#C0C0C0</color>
 </resources>

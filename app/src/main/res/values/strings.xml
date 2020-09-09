@@ -3,4 +3,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="submit">Submit</string>
+    <string name="learning_leaders">Learning Leaders</string>
+    <string name="skill_iq_leaders">Skill IQ Leaders</string>
+    <string name="name">John Doe</string>
+    <string name="country">Egypt</string>
+    <string name="submission_completed">Submission Completed</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure">Are you sure</string>
+    <string name="_300_learning_hours">300 Learning Hours,</string>
 </resources>
