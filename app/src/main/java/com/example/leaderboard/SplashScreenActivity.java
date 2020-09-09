@@ -18,9 +18,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            finish();
-        } else {
 
             new Handler().postDelayed(new Runnable() {
 
@@ -28,28 +25,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                 public void run() {
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
-                    // close this activity
                     finish();
                 }
             }, SPLASH_TIME_OUT);
-        }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            finish();
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            finish();
-        }
-    }
 }

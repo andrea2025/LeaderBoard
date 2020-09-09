@@ -93,6 +93,10 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
                                     builder.setView(viewTwo);
                                     alertTwo = builder.create();
                                     alertTwo.show();
+                                    int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+                                    int height = (int)(getResources().getDisplayMetrics().heightPixels*0.30);
+
+                                    alertTwo.getWindow().setLayout(width, height);
 
                                     Log.i("SUCCESSFULL", "SUCCESSFULL");
                                 }
@@ -124,6 +128,10 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
                 textFail.setText("Submission not Successful");
                 alertTwo = builder.create();
                 alertTwo.show();
+                int width = (int)(getResources().getDisplayMetrics().widthPixels*0.90);
+                int height = (int)(getResources().getDisplayMetrics().heightPixels*0.30);
+
+                alertTwo.getWindow().setLayout(width, height);
 
             }
         });
