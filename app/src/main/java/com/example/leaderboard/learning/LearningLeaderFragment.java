@@ -1,5 +1,6 @@
 package com.example.leaderboard.learning;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.leaderboard.BoardList;
+import com.example.leaderboard.MainActivity;
 import com.example.leaderboard.R;
 import com.example.leaderboard.data.Api.LearnerResponse;
 import com.example.leaderboard.data.AppUtils;
@@ -48,6 +50,12 @@ public class LearningLeaderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please wait data is Processing");
+        progressDialog.setMax(100);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.getProgress();
+        progressDialog.show();
 
         View rootView = inflater.inflate(R.layout.fragment_learning_leader, container, false);
         mRecyclerView = rootView.findViewById(R.id.learnerRecyclerView);
@@ -59,6 +67,7 @@ public class LearningLeaderFragment extends Fragment {
             public void onResponse(Call<List<LearnerResponse>> call, Response<List<LearnerResponse>> response) {
                if (response.isSuccessful()){
                    allLearner(response);
+                   progressDialog.dismiss();
                }
                 Log.i("RESPONSE ", String.valueOf(response.body()));
 

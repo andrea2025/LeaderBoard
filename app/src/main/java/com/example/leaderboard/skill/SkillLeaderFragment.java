@@ -1,5 +1,6 @@
 package com.example.leaderboard.skill;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -51,6 +52,11 @@ RecyclerView mRecyclerView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please wait data is Processing");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
         View rootView = inflater.inflate(R.layout.fragment_skill_leader_g, container, false);
         mRecyclerView = rootView.findViewById(R.id.skillRecycler);
         Call<List<Skills>> call = AppUtils.mService().skill();
@@ -61,6 +67,7 @@ RecyclerView mRecyclerView;
             public void onResponse(Call<List<Skills>> call, Response<List<Skills>> response) {
                 if (response.isSuccessful()){
                     skillIQ(response);
+                    progressDialog.dismiss();
                 }
 
             }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.leaderboard.BoardList;
 import com.example.leaderboard.R;
 import com.squareup.picasso.Picasso;
@@ -40,7 +41,8 @@ public class SkillIQAdapter extends RecyclerView.Adapter<SkillIQAdapter.SkillVie
         holder.mName.setText(board.getUserName());
         holder.mScore.setText(board.getUserHours() + " skill IQ Score,");
         holder.mCountry.setText(board.getUserCountry());
-        Picasso.get().load(board.getBadgeUrl()).into(holder.mBadge);
+        Glide.with(context).load(board.getBadgeUrl()).into(holder.mBadge);
+        //Picasso.get().load(board.getBadgeUrl()).into(holder.mBadge);
 
     }
 
