@@ -11,4 +11,7 @@
 
 <img width="349" alt="success_alert" src="https://user-images.githubusercontent.com/40356891/92893566-b403f100-f411-11ea-8d45-c50696447e04.png">
 
+<img width="339" alt="failed_alert" src="https://user-images.githubusercontent.com/40356891/92893770-e3b2f900-f411-11ea-9e22-cc7b1aeaaa46.png">
+
+
 
